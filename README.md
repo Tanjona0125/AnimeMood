@@ -1,5 +1,46 @@
-# Vue 3 + Vite
+# 🎭 AnimeMood
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Une application web moderne pour découvrir des animes selon votre humeur du moment. Développée avec Vue.js 3 et Tailwind CSS.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+![AnimeMood Banner](https://via.placeholder.com/800x200/242424/00fff9?text=AnimeMood)
+
+## ✨ Fonctionnalités
+
+### 🎯 **Sélection par Mood**
+- Choisissez votre humeur parmi 5 options : Chill, Nostalgique, Hype, Mind-blown, Cute
+- Interface intuitive avec animations fluides
+- Recommandations personnalisées selon votre état d'esprit
+
+### 📱 **Interface Moderne**
+- Design sombre avec accents cyan (#00fff9)
+- Animations d'arrière-plan subtiles
+- Responsive design pour tous les appareils
+- Bordures décoratives et effets visuels
+
+### 🎬 **Gestion des Animes**
+- Grille responsive d'animes avec images et descriptions
+- Page de détail complète pour chaque anime
+- Système de favoris intégré
+- Informations détaillées (synopsis, personnages, statistiques)
+
+### 🔍 **Navigation Avancée**
+- Header interactif avec logo animé
+- Bouton scroll-to-top intelligent
+- Page 404 personnalisée avec suggestions
+- États de chargement avec animations
+
+## 🚀 Technologies Utilisées
+
+- **Vue.js 3** - Framework JavaScript progressif
+- **Composition API** - API moderne de Vue.js
+- **Tailwind CSS** - Framework CSS utilitaire
+- **CSS Animations** - Animations personnalisées
+- **Responsive Design** - Compatible mobile/desktop
+
+## 🎨 Design System
+
+### Couleurs
+```css
+--color-theme1: #00fff9;     /* Cyan principal */
+--color-backgroundDark: #242424;  /* Fond sombre */
+--color-textLight: purple;   /* Texte clair */
