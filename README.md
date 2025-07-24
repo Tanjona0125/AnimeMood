@@ -2,7 +2,7 @@
 
 Une application web moderne pour découvrir des animes selon votre humeur du moment. Développée avec Vue.js 3 et Tailwind CSS.
 
-![AnimeMood Banner]([https://i.pinimg.com/736x/a9/d8/0c/a9d80cabe425ad0be625191eb281d831.jpg])
+<img src="https://i.pinimg.com/736x/a9/d8/0c/a9d80cabe425ad0be625191eb281d831.jpg" alt="Logo" width="1100" height="300"/>
 
 ## ✨ Fonctionnalités
 
