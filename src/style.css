@@ -1,0 +1,22 @@
+@import "tailwindcss";
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@theme {
+  --color-theme1: #00fff9;
+  --color-theme2: #9908ff;
+  --color-backgroundLight: #d6d6d6;
+  --color-backgroundDark: #242424;
+  --color-textLight: purple;
+  --color-textDark: purple;
+}
