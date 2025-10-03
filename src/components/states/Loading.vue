@@ -1,44 +1,44 @@
 <template>
   <!-- Animation de loading cachée -->
   <div
-    class="fixed inset-0 bg-gray-900/95 backdrop-blur-sm z-50 flex items-center justify-center"
+    class="fixed inset-0 bg-base-100 backdrop-blur-sm z-50 flex items-center justify-center"
   >
     <div class="text-center">
       <!-- Spinner principal -->
       <div class="relative w-20 h-20 mx-auto mb-6">
         <div
-          class="absolute inset-0 border-4 border-gray-700 rounded-full"
+          class="absolute inset-0 border-4 border-base-200 rounded-full"
         ></div>
         <div
-          class="absolute inset-0 border-4 border-theme1 rounded-full border-t-transparent animate-spin"
+          class="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin"
         ></div>
         <div
-          class="absolute inset-2 border-2 border-theme1/50 rounded-full border-b-transparent animate-spin-reverse"
+          class="absolute inset-2 border-2 border-primary/50 rounded-full border-b-transparent animate-spin-reverse"
         ></div>
       </div>
 
       <!-- Texte animé -->
-      <div class="text-theme1 font-bold text-xl mb-2 animate-pulse">
+      <div class="text-primary font-bold text-xl mb-2 animate-pulse">
         Chargement des animes...
       </div>
 
       <!-- Barre de progression -->
-      <div class="w-64 h-2 bg-gray-700 rounded-full overflow-hidden">
-        <div class="h-full bg-theme1 rounded-full animate-loading-bar"></div>
+      <div class="w-64 h-2 bg-base-200 rounded-full overflow-hidden">
+        <div class="h-full bg-primary rounded-full animate-loading-bar"></div>
       </div>
 
       <!-- Points animés -->
       <div class="flex justify-center gap-2 mt-4">
         <div
-          class="w-2 h-2 bg-theme1 rounded-full animate-bounce"
+          class="w-2 h-2 bg-primary rounded-full animate-bounce"
           style="animation-delay: 0s"
         ></div>
         <div
-          class="w-2 h-2 bg-theme1 rounded-full animate-bounce"
+          class="w-2 h-2 bg-primary rounded-full animate-bounce"
           style="animation-delay: 0.2s"
         ></div>
         <div
-          class="w-2 h-2 bg-theme1 rounded-full animate-bounce"
+          class="w-2 h-2 bg-primary rounded-full animate-bounce"
           style="animation-delay: 0.4s"
         ></div>
       </div>

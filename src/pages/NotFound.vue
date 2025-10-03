@@ -49,9 +49,6 @@
         <div class="absolute inset-0 text-9xl md:text-[12rem] font-black text-theme1/20 animate-glitch">
           404
         </div>
-        <div class="absolute inset-0 text-9xl md:text-[12rem] font-black text-theme1/10 animate-glitch-2">
-          404
-        </div>
       </div>
 
       <!-- Icône et message principal -->
@@ -143,11 +140,6 @@
         </p>
       </div>
     </div>
-
-    <!-- Particules d'erreur flottantes -->
-    <div class="absolute top-1/4 left-1/4 text-6xl opacity-20 animate-float-slow">❌</div>
-    <div class="absolute top-1/3 right-1/4 text-4xl opacity-15 animate-float-reverse">⚠️</div>
-    <div class="absolute bottom-1/4 left-1/3 text-5xl opacity-10 animate-float-slow">🔍</div>
   </div>
 </template>
 
@@ -181,136 +173,5 @@ const popularAnimes = [
     rating: 4.8, 
     image: '/placeholder.svg?height=100&width=80' 
   }
-]
+];
 </script>
-
-<style scoped>
-/* Animation des particules */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.7;
-  }
-}
-
-.animate-float {
-  animation: float 8s ease-in-out infinite;
-}
-
-/* Animation pulse lente */
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.3;
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-
-/* Animation bounce lente */
-@keyframes bounce-slow {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.animate-bounce-slow {
-  animation: bounce-slow 3s ease-in-out infinite;
-}
-
-/* Animation de glow pour le 404 */
-@keyframes pulse-glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 20px rgba(0, 255, 249, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 0 40px rgba(0, 255, 249, 0.6));
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Effet de glitch */
-@keyframes glitch {
-  0%, 100% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-}
-
-@keyframes glitch-2 {
-  0%, 100% {
-    transform: translate(0);
-  }
-  25% {
-    transform: translate(2px, -2px);
-  }
-  50% {
-    transform: translate(-2px, 2px);
-  }
-  75% {
-    transform: translate(2px, 2px);
-  }
-}
-
-.animate-glitch {
-  animation: glitch 0.3s ease-in-out infinite alternate;
-}
-
-.animate-glitch-2 {
-  animation: glitch-2 0.3s ease-in-out infinite alternate-reverse;
-}
-
-/* Animations flottantes pour les icônes d'erreur */
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(5deg);
-  }
-}
-
-@keyframes float-reverse {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(15px) rotate(-5deg);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
-
-.animate-float-reverse {
-  animation: float-reverse 5s ease-in-out infinite;
-}
-</style>

@@ -4,10 +4,10 @@
       v-for="m in moods"
       :key="m.key"
       @click="$emit('select', m.key)"
-      class="flex flex-col items-center p-4 bg-gray-800 rounded-xl shadow-lg hover:bg-gray-700 hover:scale-105 transition-all duration-300 border border-gray-600 hover:border-cyan-400"
+      class="flex flex-col items-center p-4 bg-base-200 rounded-xl shadow-lg hover:bg-base-300 hover:scale-105 transition-all duration-300 border border-base-content hover:border-primary hover:text-primary cursor-pointer"
     >
       <span class="text-3xl mb-2">{{ m.icon }}</span>
-      <span class="text-sm font-medium text-gray-300 hover:text-cyan-400 transition-colors">{{ m.label }}</span>
+      <span class="text-sm font-medium transition-colors">{{ m.label }}</span>
     </button>
   </div>
 </template>
@@ -21,6 +21,5 @@ const moods = [
   { key: 'mindblown', label: 'Mind-blown', icon: '🤯' },
   { key: 'cute', label: 'Cute', icon: '🐱' },
 ];
-
 defineEmits(['select']);
 </script>
