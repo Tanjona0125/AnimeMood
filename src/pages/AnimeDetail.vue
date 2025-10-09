@@ -26,7 +26,8 @@
           </div>
 
           <!-- Badge de statut -->
-          <div class="absolute top-4 right-4 bg-primary text-primary-content px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+          <div
+            class="absolute top-4 right-4 bg-primary text-primary-content px-4 py-2 rounded-full font-bold text-sm shadow-lg">
             {{ animeDetail.status || 'En cours' }}
           </div>
         </div>
@@ -166,8 +167,8 @@
             </div>
           </div>
         </Card>
-        <Card title="Similaires">
-          <RecommendationCard :id="animeId" />
+        <Card title="Similaires" class="h-[500px] overflow-x-auto">
+          <RecommendationCard :id="animeId"/>
         </Card>
       </div>
     </div>
@@ -202,11 +203,11 @@ const defaultCharacters = [
   { name: 'Mentor', role: 'Guide spirituel' }
 ]
 
-const { data, error, fetchData } = useApi(
-  `https://api.jikan.moe/v4/anime/${animeId}/full`
-);
 
 const fetchDetail = async (id) => {
+  const { data, error, fetchData } = useApi(
+    `https://api.jikan.moe/v4/anime/${id}/full`
+  );
   if (Object.keys(animeDetail.value).length === 0 || id !== animeDetail.value.mal_id) {
     load.value = true;
 
@@ -220,8 +221,8 @@ const fetchDetail = async (id) => {
       if (data.value) {
         localStorage.setItem("lastAnime", JSON.stringify(data.value.data));
         animeDetail.value = data.value.data;
-        console.log('data fetched',animeDetail.value);
-        
+        console.log('data fetched', animeDetail.value);
+
       }
     } finally {
       load.value = false;
@@ -230,13 +231,13 @@ const fetchDetail = async (id) => {
 }
 
 watch(
-    () => route.params.id,
-    (newId, oldId) => {
-        if (newId !== oldId) {
-            fetchDetail(newId);
-        }
-    },
-    { immediate: true }
+  () => route.params.id,
+  (newId, oldId) => {
+    if (newId !== oldId) {
+      fetchDetail(newId);
+    }
+  },
+  { immediate: true }
 );
 
 </script>
