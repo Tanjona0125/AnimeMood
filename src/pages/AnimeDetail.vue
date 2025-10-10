@@ -1,5 +1,5 @@
 <template>
-  <Loading v-if="load" />
+  <Loading v-if="isLoading" />
 
   <!-- Contenu principal -->
   <BorderCard v-else>
@@ -17,7 +17,8 @@
       class="bg-base-300 rounded-3xl border border-primary/80 overflow-hidden mb-8 hover:border-primary/30 transition-colors">
       <div class="flex flex-col lg:flex-row">
         <!-- Image principale -->
-        <div v-if="animeDetail.images && animeDetail.images.webp" class="lg:w-1/3 relative group overflow-hidden">
+        <div v-if="animeDetail.images && animeDetail.images.webp" loading="lazy"
+          class="lg:w-1/3 relative group overflow-hidden">
           <img :src="animeDetail.images.webp.large_image_url" :alt="animeDetail.title"
             class="w-full h-96 lg:h-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <!-- Overlay gradient -->
@@ -167,8 +168,8 @@
             </div>
           </div>
         </Card>
-        <Card title="Similaires" class="h-[500px] overflow-x-auto">
-          <RecommendationCard :id="animeId"/>
+        <Card title="Similaires" class="max-h-[450px] overflow-x-auto">
+          <RecommendationCard :id="animeId" />
         </Card>
       </div>
     </div>
@@ -178,66 +179,33 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import Loading from '../components/states/Loading.vue';
-import { onMounted, ref, watch } from 'vue';
-import { useApi } from '../api/animeApi';
+import { ref, watch } from 'vue';
 import { useText } from '../composables/useText';
+import { useAnimeDetail } from '../composables/useAnimeDetail';
 import Card from '../components/cards/Card.vue';
 import BorderCard from '../components/cards/BorderCard.vue';
 import RecommendationCard from '../components/cards/RecommendationCard.vue';
 
-const { truncate } = useText()
+const { truncate } = useText();
+const route = useRoute();
+const animeId = ref(route.params.id);
+const { animeDetail, isLoading, fetchDetail } = useAnimeDetail();
 
-const route = useRoute()
-const animeId = route.params.id;
-const load = ref(false);
-const storedData = localStorage.getItem('lastAnime');
-const animeDetail = ref(
-  storedData ? JSON.parse(storedData) : {}
+watch(
+  () => route.params.id,
+  (newId, oldId) => {
+    if (newId !== oldId) {
+      animeId.value = newId;
+      fetchDetail(newId);
+    }
+  },
+  { immediate: true }
 );
-
 // Données par défaut
 const defaultCharacters = [
   { name: 'Protagoniste', role: 'Héros principal' },
   { name: 'Deutéragoniste', role: 'Personnage secondaire' },
   { name: 'Antagoniste', role: 'Rival/Ennemi' },
   { name: 'Mentor', role: 'Guide spirituel' }
-]
-
-
-const fetchDetail = async (id) => {
-  const { data, error, fetchData } = useApi(
-    `https://api.jikan.moe/v4/anime/${id}/full`
-  );
-  if (Object.keys(animeDetail.value).length === 0 || id !== animeDetail.value.mal_id) {
-    load.value = true;
-
-    try {
-      await fetchData();
-
-      if (error.value) {
-        console.error("Erreur API :", error.value);
-      }
-
-      if (data.value) {
-        localStorage.setItem("lastAnime", JSON.stringify(data.value.data));
-        animeDetail.value = data.value.data;
-        console.log('data fetched', animeDetail.value);
-
-      }
-    } finally {
-      load.value = false;
-    }
-  }
-}
-
-watch(
-  () => route.params.id,
-  (newId, oldId) => {
-    if (newId !== oldId) {
-      fetchDetail(newId);
-    }
-  },
-  { immediate: true }
-);
-
+];
 </script>

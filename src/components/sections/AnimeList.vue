@@ -73,7 +73,6 @@ const props = defineProps({
 
 const emit = defineEmits(['toggle-fav']);
 
-
 // État de chargement
 const isLoading = ref(true)
 const showScrollTop = ref(false)
