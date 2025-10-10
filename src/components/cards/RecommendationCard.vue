@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div v-if="isLoading" class="flex items-center gap-3 p-3 rounded-lg">
+        <div v-if="isLoading" v-for="n in 3" :key="n" class="flex items-center gap-3 p-3 rounded-lg">
             <div class="skeleton w-12 h-16 rounded bg-base-200"></div>
             <div>
                 <div class="skeleton w-30 h-7 rounded bg-base-200"></div>
             </div>
         </div>
         <div v-else>
-            <div v-if="animeRecommendation && animeRecommendation.length > 0" v-for="item in animeRecommendation" :key="item.entry.mal_id">
+            <div v-if="animeRecommendation && animeRecommendation.length > 0" v-for="item in animeRecommendation.slice(0, 10)" :key="item.entry.mal_id">
                 <router-link :to="{ name: 'anime_detail', params: { id: item.entry.mal_id } }">
                     <div
                         class="flex items-center gap-3 p-3 bg-base-300 rounded-lg hover:bg-base-200/80 transition-colors cursor-pointer">
@@ -45,8 +45,6 @@ watch(
     (newId, oldId) => {
         if (newId !== oldId) {
             fetchRecommendation(newId);
-            console.log(animeRecommendation.value.length === 0);
-            
         }
     },
     { immediate: true }

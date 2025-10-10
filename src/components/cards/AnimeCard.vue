@@ -10,7 +10,7 @@
 
         <!-- Badge flottant -->
         <div class="absolute top-4 right-4 bg-primary text-primary-content px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-          {{ anime.source }}
+          {{ anime.score }}
         </div>
       </div>
 
@@ -42,7 +42,6 @@
         </button>
       </div>
 
-      <!-- Effet de bordure animée -->
       <div
         class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
         <div class="absolute inset-0 rounded-2xl border-2 border-primary animate-pulse"></div>

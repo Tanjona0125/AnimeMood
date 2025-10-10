@@ -16,7 +16,7 @@ export function useAnimeRecommendation() {
       animeRecommendation.value = data.value.data;
       localStorage.setItem("lastRecommendation", JSON.stringify(data.value.data));
     }
+    
   }
-
   return { animeRecommendation, isLoading, fetchRecommendation };
 }

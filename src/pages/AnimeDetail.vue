@@ -3,14 +3,16 @@
 
   <!-- Contenu principal -->
   <BorderCard v-else>
-    <button @click="$emit('go-back')"
-      class="group flex items-center gap-3 mb-4 px-4 py-2 bg-base-200 text-base-content rounded-xl border border-base-300 hover:border-primary hover:bg-base-300 transition-all duration-300 hover:scale-105">
-      <svg class="w-5 h-5 group-hover:text-primary transition-colors" fill="none" stroke="currentColor"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-      <span class="group-hover:text-primary transition-colors">Retour</span>
-    </button>
+    <router-link to="/">
+      <button @click="$emit('go-back')"
+        class="group flex items-center gap-3 mb-4 px-4 py-2 bg-base-200 text-base-content rounded-xl border border-base-300 hover:border-primary hover:bg-base-300 transition-all duration-300 hover:scale-105">
+        <svg class="w-5 h-5 group-hover:text-primary transition-colors" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span class="group-hover:text-primary transition-colors">Retour</span>
+      </button>
+    </router-link>
 
     <!-- Hero Section -->
     <div
@@ -40,7 +42,7 @@
             <!-- Titre et note -->
             <div>
               <h1 class="text-4xl font-bold text-base-content mb-2 group-hover:text-primary transition-colors">
-                {{ animeDetail.title }}
+                {{ animeDetail.title_english }}
               </h1>
               <h2 class="text-2xl font-bold text-base-content/50 mb-2 group-hover:text-primary transition-colors">
                 {{ animeDetail.title_japanese }}
@@ -118,16 +120,7 @@
           </p>
         </Card>
         <Card title="Personnages principaux">
-          <div v-for="character in (animeDetail.characters || defaultCharacters)" :key="character.name"
-            class="flex items-center gap-4 p-4 bg-base-300 rounded-xl hover:bg-base--300/80 transition-colors">
-            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-              <span class="text-primary font-bold">{{ character.name.charAt(0) }}</span>
-            </div>
-            <div>
-              <h3 class="font-semibold text-base-content">{{ character.name }}</h3>
-              <p class="text-base-content/80 text-sm">{{ character.role }}</p>
-            </div>
-          </div>
+          <CharacterCard :id="animeId" />
         </Card>
       </div>
 
@@ -146,25 +139,33 @@
             <p class="text-base-content font-medium">{{ animeDetail.duration || '24 min/ép' }}</p>
           </div>
           <div class="flex justify-between">
+            <p class="text-base-content/80">Episodes</p>
+            <p class="text-base-content font-medium">{{ animeDetail.episodes || '12' }}</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-base-content/80">Date</p>
+            <p class="text-base-content font-medium">{{ animeDetail.aired.string || '11/11/2001' }}</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-base-content/80">Public</p>
+            <p class="text-base-content font-medium">{{ animeDetail.rating || 'kids' }}</p>
+          </div>
+          <div class="flex justify-between">
             <p class="text-base-content/80">Source</p>
             <p class="text-base-content font-medium">{{ animeDetail.source || 'Manga' }}</p>
           </div>
-          <div>
-            <div class="flex justify-between mb-2">
-              <p class="text-base-content/80">Popularité</p>
-              <p class="text-primary font-bold">92%</p>
-            </div>
-            <div class="w-full bg-base-200 rounded-full h-2">
-              <div class="bg-primary h-2 rounded-full" style="width: 92%"></div>
-            </div>
+          <div class="flex justify-between">
+            <p class="text-base-content/80">Rank</p>
+            <p class="text-base-content font-medium">{{ animeDetail.rank || '999' }}</p>
           </div>
           <div>
             <div class="flex justify-between mb-2">
-              <p class="text-base-content/80">Note critique</p>
-              <p class="text-primary font-bold">88%</p>
+              <p class="text-base-content/80">Score</p>
+              <p class="text-primary font-bold">{{ animeDetail.score || '6.0' }}</p>
             </div>
             <div class="w-full bg-base-200 rounded-full h-2">
-              <div class="bg-primary h-2 rounded-full" style="width: 88%"></div>
+              <div class="bg-primary h-2 rounded-full"
+                :style="{ width: (animeDetail.score ? animeDetail.score * 10 : 70) + '%' }"></div>
             </div>
           </div>
         </Card>
@@ -185,6 +186,7 @@ import { useAnimeDetail } from '../composables/useAnimeDetail';
 import Card from '../components/cards/Card.vue';
 import BorderCard from '../components/cards/BorderCard.vue';
 import RecommendationCard from '../components/cards/RecommendationCard.vue';
+import CharacterCard from '../components/cards/CharacterCard.vue';
 
 const { truncate } = useText();
 const route = useRoute();
@@ -201,11 +203,4 @@ watch(
   },
   { immediate: true }
 );
-// Données par défaut
-const defaultCharacters = [
-  { name: 'Protagoniste', role: 'Héros principal' },
-  { name: 'Deutéragoniste', role: 'Personnage secondaire' },
-  { name: 'Antagoniste', role: 'Rival/Ennemi' },
-  { name: 'Mentor', role: 'Guide spirituel' }
-];
 </script>

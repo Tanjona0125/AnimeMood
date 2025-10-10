@@ -23,7 +23,7 @@
           class="flex items-center justify-between mb-6 p-4 bg-gradient-to-tr from-base-200 to-base-300 rounded-xl border border-base-content hover:border-primary/30 transition-colors">
           <div class="flex items-center gap-4">
             <span class="text-base-content">Résultats trouvés :</span>
-            <span class="text-primary font-bold text-lg">{{ animeList.length }}</span>
+            <span class="text-primary font-bold text-lg">{{ animeList.length <= 24 ? animelist.length : '24' }}</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
@@ -33,7 +33,7 @@
 
         <!-- Grid responsive améliorée -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <AnimeCard v-for="anime in animeList" :key="anime.mal_id" :anime="anime"
+          <AnimeCard v-for="anime in animeList.slice(0, 24)" :key="anime.mal_id" :anime="anime"
             :style="{ animationDelay: `${anime.rank * 100}ms` }" class="animate-fade-in-up"
             @toggle-fav="$emit('toggle-fav', anime)" />
         </div>
