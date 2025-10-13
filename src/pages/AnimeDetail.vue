@@ -19,7 +19,7 @@
       class="bg-base-300 rounded-3xl border border-primary/80 overflow-hidden mb-8 hover:border-primary/30 transition-colors">
       <div class="flex flex-col lg:flex-row">
         <!-- Image principale -->
-        <div v-if="animeDetail.images && animeDetail.images.webp" loading="lazy"
+        <div v-if="animeDetail.images && animeDetail.images.webp"
           class="lg:w-1/3 relative group overflow-hidden">
           <img :src="animeDetail.images.webp.large_image_url" :alt="animeDetail.title"
             class="w-full h-96 lg:h-full object-cover transition-transform duration-700 group-hover:scale-105" />

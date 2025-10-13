@@ -1,8 +1,21 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto/Roboto.ttf') format('TrueType');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Saira_Stencil_One';
+  src: url('./assets/fonts/Saira_Stencil_One/SairaStencilOne-Regular.ttf') format('TrueType');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Roboto',system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -16,12 +29,7 @@
 }
 
 @theme {
-  --color-theme1: #00fff9;
-  --color-theme2: #9908ff;
-  --color-backgroundLight: #d6d6d6;
-  --color-backgroundDark: #242424;
-  --color-textLight: purple;
-  --color-textDark: purple;
+  --font-primary:'Saira_Stencil_One', Helvetica, Arial, sans-serif;
 }
 
 @plugin "daisyui/theme" {
@@ -33,7 +41,6 @@
   --color-base-200: oklch(20% 0.09 281.288);
   --color-base-300: oklch(25% 0.09 281.288);
   --color-base-content: oklch(78% 0.115 274.713);
-  --color-base-content-lighter: oklch(91.716% 0.04013 276.311);
   --color-primary: oklch(82% 0.111 230.318);
   --color-primary-content: oklch(29% 0.066 243.157);
   --color-secondary: oklch(71% 0.202 349.761);

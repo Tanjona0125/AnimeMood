@@ -5,35 +5,12 @@
         <!-- Logo et titre -->
         <router-link to="/">
           <div class="flex items-center gap-4">
-            <button class="group relative cursor-pointer">
-              <!-- Icône avec effet glow et animation -->
-              <div
-                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-primary/40"
-              >
-                <span
-                  class="text-2xl transition-transform duration-300 group-hover:scale-125"
-                  >🎭</span
-                >
-              </div>
-              <!-- Petit indicateur animé -->
-              <div
-                class="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full animate-pulse group-hover:animate-bounce"
-              ></div>
-
-              <!-- Effet de ripple au hover -->
-              <div
-                class="absolute inset-0 rounded-xl bg-primary/20 scale-0 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"
-              ></div>
-            </button>
-
             <button class="group">
-              <h1
-                class="text-3xl font-bold text-base-content transition-all duration-300"
-              >
-                Anime<span class="text-primary">Mood</span>
+              <h1 class="text-2xl font-bold text-base-content-lighter transition-all duration-300 font-primary">
+                AnimeMood
               </h1>
-              <p class="text-base-content text-sm transition-colors duration-300">
-                Découvrez selon votre humeur
+              <p class="text-base-content text-[10px] transition-colors duration-300">
+                Yamero senpai
               </p>
             </button>
           </div>
