@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import Logo from '../components/ui/Logo.vue';
+
+</script>
+
 <template>
   <footer class="relative bg-base-200 border-t border-base-content mt-16">
     <!-- Contenu principal -->
@@ -5,20 +10,9 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Logo et description -->
         <div class="md:col-span-2">
-          <router-link to="/">
-            <div class="flex items-center gap-4 my-5">
-              <button class="group">
-                <h1 class="text-2xl font-bold text-base-content-lighter transition-all duration-300 font-primary">
-                  AnimeMood
-                </h1>
-                <p class="text-base-content text-[10px] transition-colors duration-300">
-                  Yamero senpai
-                </p>
-              </button>
-            </div>
-          </router-link>
+          <Logo />
 
-          <p class="text-base-content mb-6 max-w-md">
+          <p class="text-base-content my-4 max-w-md">
             Découvrez des animes selon votre humeur du moment. Une expérience personnalisée pour tous les otakus.
           </p>
 

@@ -13,7 +13,7 @@
       </div>
 
       <!-- Contenu -->
-      <div class="p-4 flex flex-col absolute bottom-0 left-0 h-40 w-full bg-base-200/70  backdrop-blur-[2px]">
+      <div class="p-4 flex flex-col absolute bottom-0 left-0 h-40 w-full bg-base-200/20  backdrop-blur-[2px]">
         <h3
           class="text-xl font-bold text-base-lighter group-hover:text-primary transition-colors duration-300 mb-2">
           {{ anime.title }}

@@ -1,9 +1,9 @@
 <template>
-  <BorderCard :title='"Des recommendation "+mood+" for you"'>
+  <BorderCard :title='"Des recommendation for you"'>
     <div class="relative z-10 rounded-2xl bg-base-200/50 backdrop-blur-sm p-6">
 
       <!-- Loading state (skeleton) -->
-      <div v-if="isLoading" class="max-w-7xl mx-auto">
+      <div v-if="load" class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <div v-for="n in 8" :key="n"
             class="bg-base-300 rounded-2xl h-80 animate-pulse border border-base-content hover:border-primary/30 transition-colors">
@@ -46,7 +46,7 @@
             Aucun anime trouvé
           </h3>
           <p class="text-base-content">
-            Essayez un autre mood pour découvrir de nouveaux animes
+            Rien à l'écran... pour l'instant. Lance une autre recherche — ta prochaine obsession anime t'attend !
           </p>
         </div>
       </div>
@@ -67,32 +67,14 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import BorderCard from '../cards/BorderCard.vue';
 
 const props = defineProps({
-  mood: String,
-  animeList: Object
+  animeList: Object,
+  load:Boolean,
 });
 
 const emit = defineEmits(['toggle-fav']);
 
 // État de chargement
-const isLoading = ref(true)
 const showScrollTop = ref(false)
-
-// Simulation du chargement
-let timeoutId
-
-watch(
-  () => props.mood,
-  () => {
-    isLoading.value = true
-
-    if (timeoutId) clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => {
-      isLoading.value = false
-    }, 500)
-  },
-  { immediate: true }
-)
-
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
