@@ -19,7 +19,7 @@
               </div>
 
               <!-- Title -->
-              <h1 class="text-5xl md:text-6xl font-bold text-base-content leading-tight text-balance">
+              <h1 class="text-5xl md:text-6xl font-bold text-base-content leading-tight text-balance line-clamp-3">
                    {{ animeRandom.title }}
               </h1>
 
@@ -111,6 +111,5 @@ const {truncate} = useText();
 onMounted(() => {
   fetchGenre();
 });
-console.log(animeRandom.value);
 
 </script>

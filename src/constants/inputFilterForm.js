@@ -1,8 +1,15 @@
 export const inputFilterForm = [
+  //  {
+  //   label: "Contenue safe (sfw).",
+  //   name: "sfw",
+  //   types: 'checkbox',
+  //   model:'sfw',
+  // },
   {
     label: 'Types',
     placeholder: "Types d'animes favoris",
     types: 'select',
+    model:'type',
     input: [
       {
         name: 'tv',
@@ -43,9 +50,10 @@ export const inputFilterForm = [
     ]
   },
   {
-    label: 'Types',
-    placeholder: "Types d'animes favoris",
+    label: 'Status',
+    placeholder: "Statut de l'anime actuel",
     types: 'select',
+    model:'status',
     input: [
       {
         name: 'airing',
@@ -65,7 +73,7 @@ export const inputFilterForm = [
     label: "Audience",
     placeholder: "Type d'audience",
     types: 'select',
-
+    model:'rating',
     input: [
       {
         name: 'G - All Ages',
@@ -97,6 +105,7 @@ export const inputFilterForm = [
     label: "Trier par",
     placeholder: "Ordre de trie des resultats",
     types: 'select',
+    model:'order_by',
     input: [
       {
         name: 'Titre',
@@ -144,5 +153,6 @@ export const inputFilterForm = [
     label: "Contenue safe (sfw).",
     name: "sfw",
     types: 'checkbox',
+    model:'sfw',
   }
 ]
