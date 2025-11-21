@@ -8,7 +8,7 @@ export function useAnimeList() {
   const cached = storedData ? JSON.parse(storedData) : null;
   const animeList = ref(cached);
 
-  async function fetchList(mood) {
+  async function fetchList() {
 
     if (cached) {
       animeList.value = cached;

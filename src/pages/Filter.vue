@@ -1,15 +1,12 @@
 <template>
-  <BorderCard>
-    <AnimeList :anime-list="animeList" :load="isLoading" />
-  </BorderCard>
+  <AnimeList :animeList="animeFilter" :load="isLoading" />
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import BorderCard from '../components/cards/BorderCard.vue'
 import AnimeList from '../components/sections/AnimeList.vue';
-import { useAnimeList } from '../composables/useAnimeList';
 import { useRoute } from 'vue-router';
+import { useAnimeFilter } from '../composables/useAnimeFilter';
 
 const route = useRoute();
 const filter = ref({
@@ -21,8 +18,10 @@ const filter = ref({
   sfw: route.query.sfw,
   selected_genres: route.query.selected_genres,
 });
-const { animeList, isLoading, fetchList } = useAnimeList();
+
+const { animeFilter, isLoading, fetchFilter } = useAnimeFilter();
+
 onMounted(() => {
-  fetchList()
+  fetchFilter(filter)
 });
 </script>

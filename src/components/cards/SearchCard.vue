@@ -9,11 +9,11 @@
                             stroke="currentColor" class="size-4">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                <input id="search" type="text" placeholder="Jojo's Bizzare Adventure" v-model="form.q" />
                         </svg>
-                        <input id="search" type="text" placeholder="Jojo's Bizzare Adventure" v-model="form.q" />
                     </label>
                 </div>
-                <div v-for="field in inputFilterForm">
+                <div v-for="field in inputFilterForm" :key="field.label">
                     <div v-if="field.types === 'select'" class="flex flex-col">
                         <p class="label">{{ field.label }}</p>
                         <select class="select my-2 capitalize w-full" v-model="form[field.model]">
@@ -34,12 +34,10 @@
                 <div class="flex flex-col">
                     <p class="label">Genre</p>
                     <fieldset class="my-2">
-                        <label v-for="genre in animeGenre" :class="[
+                        <label v-for="genre in animeGenre" :key="genre.mal_id" :class="[
                             'badge badge-primary m-0.5 cursor-pointer',
-                            form.selected_genres.includes(genre.mal_id) ? '' : 'badge-outline'
                         ]">
-                            <input type="checkbox" name="g[]" :value="genre.mal_id" v-model="form.selected_genres"
-                                class="sr-only">
+                            <input type="checkbox" name="g[]" :value="genre.mal_id" v-model="form.selected_genres" class="sr-only">
                             {{ genre.name }}
                         </label>
                     </fieldset>
@@ -49,6 +47,7 @@
                 name: 'filter', query: {
                     q: form.q,
                     status: form.status,
+                    type: form.type,
                     rating: form.rating,
                     order_by: form.order_by,
                     sfw: form.sfw,
@@ -64,7 +63,6 @@
 import { inputFilterForm } from '../../constants/inputFilterForm';
 import { useAnimeGenre } from '../../composables/useAnimeGenre'
 import { onMounted, ref, watch } from 'vue';
-// import { useRouter } from 'vue-router';
 
 const { animeGenre, fetchGenre } = useAnimeGenre();
 const form = ref({
@@ -76,29 +74,6 @@ const form = ref({
     sfw: false,
     selected_genres: [],
 });
-watch(
-    form,
-    (newValue, oldValue) => {
-        console.log(newValue.selected_genres.join(','));
-
-    },
-    { deep: true }
-);
-
-// const router = useRouter();
-// const goToFilter = () => {
-//     router.push({
-//         name:'/filter',
-//         query: {
-//             q:form.q,
-//             status:form.status,
-//             rating:form.rating,
-//             order_by:form.order_by,
-//             sfw:form.sfw,
-//             selected_genres:form.selected_genres.join(','),
-//         }
-//     })
-// };
 
 onMounted(() => {
     fetchGenre();

@@ -8,8 +8,9 @@ export function useAnimeRandom() {
     const cached = storedData ? JSON.parse(storedData) : null;
     const animeRandom = ref(cached);
 
-    async function fetchGenre() {
-        // if (animeRandom.value && animeRandom.value.length > 0) return;
+    async function fetchAnimeRandom() {
+        
+        if (animeRandom.value && animeRandom.value.length > 0) return;
 
         await fetchData(`https://api.jikan.moe/v4/random/anime`);
 
@@ -19,5 +20,5 @@ export function useAnimeRandom() {
         }
 
     }
-    return { animeRandom, isLoading, fetchGenre };
+    return { animeRandom, isLoading, fetchAnimeRandom };
 }

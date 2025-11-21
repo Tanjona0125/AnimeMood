@@ -1,10 +1,4 @@
 export const inputFilterForm = [
-  //  {
-  //   label: "Contenue safe (sfw).",
-  //   name: "sfw",
-  //   types: 'checkbox',
-  //   model:'sfw',
-  // },
   {
     label: 'Types',
     placeholder: "Types d'animes favoris",
